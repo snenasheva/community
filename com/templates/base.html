@@ -108,15 +108,7 @@
     </div>
   </div>
 </nav>
-<!--
-{% if current_user.is_authenticated %}
-<div class="container mt-3 d-flex justify-content-end">
-	<div class="col-auto">
-		<a class="btn btn-outline-primary" href="{{ url_for ('logout') }}">Log out</a>
-	</div>
-</div>
-{% endif %}
--->
+
 
 {% with messages = get_flashed_messages(with_categories=true) %}
   	{% if messages %}
