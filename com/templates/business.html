@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- html-code for Business Registration Form HERE --->
+<body class="text-left">
+<div class="container">
+    <form action="" method="POST" class="form-register" style="color:black">
+      {{ form.hidden_tag() }}
+      <br>
+      <h1 class="h3 mb-3 font-weight-normal text-center">
+       To add your business page to the site, please, fill the form fields:
+       </h1>
+       <br>
+        {{ form.business_name.label() }}
+        {{ form.business_name(class='form-control', placeholder='') }}
+        <br>
+        {{ form.category.label() }}
+        {{ form.category(class='form-control', placeholder='') }}
+        <br>
+        {{ form.owner_name.label() }}
+        {{ form.owner_name(class='form-control', placeholder='') }}
+        <br>
+        {{ form.description.label() }}
+        {{ form.description(class='form-control', placeholder='Your business description (optional field)') }}
+        <br>
+        {{ form.phone.label() }}
+        {{ form.phone(class='form-control', placeholder='Optional Field') }}
+        <br>
+        {{ form.address.label() }}
+        {{ form.address(class='form-control', placeholder='Optional Field') }}
+        <br>
+        {{ form.web_page.label() }}
+        {{ form.web_page(class='form-control', placeholder='Optional Field') }}
+        <br>
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        <br>
+
+    </form>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4">
+<h1>
+    {{ item.name }}
+</h1>
+
+  {{ item.description }}
+  <br>
+  <br>
+  the owner: {{ item.owner_name }}
+  <br>
+  phone number: {{ item.phone }}
+  <br>
+  address: {{ item.address }}
+  <br>
+  web-page: {{ item.web_page }}
+</div>
+{% endblock %}
+
+{% for item in current_user.items %}
+  {{ item.url_friendly_name }}
+{% endfor %}
+
