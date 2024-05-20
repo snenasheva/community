@@ -45,9 +45,6 @@ def login_page():
         if attempted_user is None:
             flash('There is no user with this username. Please, try again', category='danger')
         elif attempted_user.check_login_psw(attempted_password=form.password.data):
-        #elif attempted_user and attempted_user.check_login_psw(
-        #        attempted_password=form.password.data
-        #):
             login_user(attempted_user)
             flash(f'Success! Now you are logged in as {attempted_user.username}', category='success')
             return redirect(url_for('home_page'))
@@ -111,23 +108,3 @@ def drop():
 def dropdown():
     return render_template('dropdown.html')
 
-# @app.route('/user_service/<url_friendly_name>')
-# def user_service(url_friendly_name):
-#     item = Item.query.filter_by(url_friendly_name=url_friendly_name).first()
-#     id = item.id
-#     if item:
-#         return render_template('user_service.html', item=item, url_friendly_name=url_friendly_name)
-#     else:
-#         # Handle the case where the item with the specified URL-friendly name is not found
-#         return "Business not found", 404
-
-# @app.route('/post/<url>')
-# routing example
-# def post(url):
-#     url = Post.query.filter_by(url=url).first_or_404()
-#     id = url.id
-#     author = url.author
-#     title = url.title
-#     body = url.body
-#     date = url.date
-#     return render_template('post.html', title=title, id=id, author=author, body=body, date=date)
