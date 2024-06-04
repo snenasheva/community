@@ -89,19 +89,33 @@
     <main class="main">
       <section>
         <div class="background-image">
-            <div class="content">
-                <h1 class="display-4">Welcome to the Pardes Hanna-Karkur Business List!</h1>
-            </div>
-            <div  class="finder">
-                <form class="search-form d-flex">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 text-center">
+                <div class="content">
+                  <h1 class="display-4">Welcome to the Pardes Hanna-Karkur Business List!</h1>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <div  class="finder">
+                  <form class="search-form d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <div class="bottom-content">
+                  <h2>
+                    Find the best local cafés, shops, services, and more. <br>
+                    Business owner? <a href="{{ url_for('register_page') }}">
+                            Register</a> your business page with us today!<br>
+                  </h2>
+                </div>
+              </div>
             </div>
-            <div class="bottom-content">
-                <h2>Find the best local cafés, shops, services, and more. <br>
-        Business owner? <a href="{{ url_for('register_page') }}">Register</a> your business page with us today!<br></h2>
-            </div>
+          </div>
         </div>
       </section>
 
