@@ -94,49 +94,30 @@ main.main {
 }
 
 .background-image {
-  position: relative;
   background-image: url('../img/home/banner2.jpg');
   background-position: center;
   background-size: cover;
-  height: 409px;
-  width: 100%;
   padding: 60px 0;
+  text-align: center;
+  color: white;
 }
 
 .background-image .content {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   margin-bottom: 30px;
-  text-align: center;
-  color: white;
-  width: 100%;
   }
 
 .background-image .finder {
-  position: absolute;
-  top: 60%;
-  left: 50%;
   margin-bottom: 30px;
-  transform: translateX(-50%);
-  width: 60%;
 }
 
-.background-image .finder form {
-  display: inline-flex;
-  justify-content: center;
+.background-image .search-form {
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
 }
 
 .background-image .bottom-content {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
   padding-top: 20px;
-  color: black;
-  width: 100%;
 }
 
 .background-image .bottom-content a {
