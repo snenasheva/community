@@ -69,16 +69,9 @@
         <a class="nav-link" href="{{ url_for ('home_page') }}">Home</a>
     </li>
     {% if current_user.items %}
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Your Businesses
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {% for item in current_user.items %}
-            <li><a class="dropdown-item" href="{{ url_for ('service', url=item.url_friendly_name) }}">{{ item.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for ('drop') }}">Your Businesses</a>
+      </li>
     {% endif %}
     <li class="nav-item">
         <a class="nav-link" href="{{ url_for ('business_page') }}">Add Your Business</a>
