@@ -1,5 +1,5 @@
 from com import app, db
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from com.forms import RegistrationForm, LoginForm, BusinessForm
 from com.models import User, Item
 from flask_login import login_user, logout_user, login_required, current_user
@@ -104,7 +104,22 @@ def drop():
     return render_template('drop.html')
 
 
-@app.route('/dropdown')
-def dropdown():
-    return render_template('dropdown.html')
+@app.route('/base2')
+def base2():
+    return render_template('base2.html')
+
+
+@app.route('/search', methods=["GET", "POST"])
+def search():
+    search_query = request.args.get('search_query')
+    if search_query:
+        results = Item.query.filter(Item.name.ilike(f'%{search_query}%')).all()
+        return render_template('search_results.html', results=results, search_query=search_query)
+    return redirect(url_for('base2'))
+
+
+
+
+
+
 
