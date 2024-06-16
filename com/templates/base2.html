@@ -35,13 +35,15 @@
               Your Businesses
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                {% for item in current_user.items %}
+                <li>
+                    <a class="dropdown-item" href="{{ url_for ('service', url=item.url_friendly_name) }}">{{item.name}}</a>
+                </li>
+                {% endfor %}
             </ul>
+          </li>
             {% endif %}
-              <li class="nav-item me-3">
+          <li class="nav-item me-3">
 			  <a class="nav-link" href="{{ url_for ('business_page') }}">Add Your Business</a>
 		  </li>
           <li class="nav-item me-3">

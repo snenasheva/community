@@ -93,9 +93,8 @@ def business_page():
 
 
 @app.route('/service/<url>')
-@login_required
 def service(url):
-    item = Item.query.filter_by(url_friendly_name=url, owner_id=current_user.id).first_or_404()
+    item = Item.query.filter_by(url_friendly_name=url).first_or_404()
     return render_template('service.html', item=item)
 
 
