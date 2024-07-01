@@ -87,10 +87,10 @@
       {% else %}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Enterprise</a>
+          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Поддержка</a>
+          <a class="nav-link" href="#">Link2</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for ('home_page') }}">Home</a>
@@ -108,13 +108,11 @@
     </div>
   </div>
 </nav>
-
-
 {% with messages = get_flashed_messages(with_categories=true) %}
   	{% if messages %}
   	{% for category, message in messages %}
   	<div class="alert alert-{{category}}">
-     	<button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+     	<button type="button" class="m1-2 mb-1 close" data-bs-dismiss="alert" aria-label="Close">
      	<span aria-hidden="true">&times;</span>
      	</button>
      	{{ message }}
@@ -129,44 +127,41 @@
 {% endblock %}
 
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
-	<div class="row">
-  	<div class="col-12 col-md">
-    	<img class="mb-2" src="/img/brand/bootstrap-solid.svg" alt="логотип bootstrap" width="24" height="24">
-    	<small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
-  	</div>
-  	<div class="col-6 col-md">
-    	<h5>Особенности</h5>
-    	<ul class="list-unstyled text-small">
-      	<li><a class="link-secondary" href="#">Прикольная штука</a></li>
-      	<li><a class="link-secondary" href="#">Случайная особенность</a></li>
-      	<li><a class="link-secondary" href="#">Особенность команды</a></li>
-      	<li><a class="link-secondary" href="#">Материал для разработчиков</a></li>
-    	</ul>
-  	</div>
-  	<div class="col-6 col-md">
-    	<h5>Ресурсы</h5>
-    	<ul class="list-unstyled text-small">
-      	<li><a class="link-secondary" href="#">Ресурс</a></li>
-      	<li><a class="link-secondary" href="#">Название ресурса</a></li>
-      	<li><a class="link-secondary" href="#">Другой ресурс</a></li>
-      	<li><a class="link-secondary" href="#">Заключительный ресурс</a></li>
-    	</ul>
-  	</div>
-  	<div class="col-6 col-md">
-    	<h5>О нас</h5>
-    	<ul class="list-unstyled text-small">
-      	<li><a class="link-secondary" href="#">Команда</a></li>
-      	<li><a class="link-secondary" href="#">Местоположение</a></li>
-      	<li><a class="link-secondary" href="#">Конфиденциальность</a></li>
-      	<li><a class="link-secondary" href="#">Сроки</a></li>
-    	</ul>
-  	</div>
-	</div>
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/img/brand/bootstrap-solid.svg" alt="логотип bootstrap" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Особенности</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">Прикольная штука</a></li>
+          <li><a class="link-secondary" href="#">Случайная особенность</a></li>
+          <li><a class="link-secondary" href="#">Особенность команды</a></li>
+          <li><a class="link-secondary" href="#">Материал для разработчиков</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Ресурсы</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">Ресурс</a></li>
+          <li><a class="link-secondary" href="#">Название ресурса</a></li>
+          <li><a class="link-secondary" href="#">Другой ресурс</a></li>
+          <li><a class="link-secondary" href="#">Заключительный ресурс</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>О нас</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="#">Команда</a></li>
+          <li><a class="link-secondary" href="#">Местоположение</a></li>
+          <li><a class="link-secondary" href="#">Конфиденциальность</a></li>
+          <li><a class="link-secondary" href="#">Сроки</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
-</div>
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq5j9M3U6K9IHsP57VV9pb0iA6FCl/D9sK5ghF1VVFcbP08p2Q" crossorigin="anonymous"></script>
+</div><script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179173139-1"></script>
 <script>
@@ -176,6 +171,7 @@
 
   gtag('config', 'UA-179173139-1');
 </script>
-
+<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) }; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(67718821, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/67718821" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
