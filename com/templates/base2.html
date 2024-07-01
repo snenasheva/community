@@ -89,37 +89,9 @@
   	{% endif %}
   	{% endwith %}
     <main class="main">
-      <section>
-        <div class="background-image">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 text-center">
-                <div class="content">
-                  <h1 class="display-4">Welcome to the Pardes Hanna-Karkur Business List!</h1>
-                </div>
-              </div>
 
-              <div class="col-12 text-center">
-                <div  class="finder">
-                  <form class="search-form d-flex justify-content-center" method="GET" action="{{ url_for('search') }}">
-                    <input class="form-control me-2" type="search" name="search_query" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
-              <div class="col-12 text-center">
-                <div class="bottom-content">
-                  <h2>
-                    Find the best local cafés, shops, services, and more. <br>
-                    Business owner? <a href="{{ url_for('register_page') }}">
-                            Register</a> your business page with us today!<br>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {% block content %}
+      {% endblock %}
 
       <div class="container-fluid mt-5 mb-5">
           <div class="row">
@@ -133,7 +105,7 @@
            <div class="row">
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/cafe.jpg" class="card-img-top" alt="Food Image">
+                       <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Food</a>
                        </div>
@@ -141,7 +113,7 @@
                </div>
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/yoga.jpg" class="card-img-top" alt="Health Image">
+                       <img src="{{ url_for('static', filename='img/home/yoga.jpg') }}" class="card-img-top" alt="Health Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Health</a>
                        </div>
@@ -149,7 +121,7 @@
                </div>
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/repair.jpg" class="card-img-top" alt="Repair Image">
+                       <img src="{{ url_for('static', filename='img/home/repair.jpg') }}" class="card-img-top" alt="Repair Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Repair</a>
                        </div>
@@ -157,7 +129,7 @@
                </div>
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/shopping.jpg" class="card-img-top" alt="Shopping Image">
+                       <img src="{{ url_for('static', filename='img/home/shopping.jpg') }}" class="card-img-top" alt="Shopping Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Shopping</a>
                        </div>
@@ -165,7 +137,7 @@
                </div>
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/disco2.jpg" class="card-img-top" alt="Events Image">
+                       <img src="{{ url_for('static', filename='img/home/disco2.jpg') }}" class="card-img-top" alt="Events Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Events</a>
                        </div>
@@ -173,7 +145,7 @@
                </div>
                <div class="col-lg-2 col-sm-4 mt-2 text-center">
                    <div class="card" style="width: 10rem;">
-                       <img src="static/img/home/home_garden.jpg" class="card-img-top" alt="Home Image">
+                       <img src="{{ url_for('static', filename='img/home/home_garden.jpg') }}"  class="card-img-top" alt="Home Image">
                        <div class="card-body">
                            <a href="#" class="btn btn-primary">Home&Garden</a>
                        </div>
