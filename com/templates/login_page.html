@@ -2,8 +2,8 @@
 
 {% block content %}
 <!-- html-code for Login form HERE --->
-<body class="text-center">
-<div class="container">
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="text-center" style="width: 100%; max-width: 900px;">
         <form method="POST" class="form-register" style="color:black">
             {{ form.hidden_tag() }}
             <br>
@@ -25,6 +25,6 @@
 
             {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
         </form>
+    </div>
 </div>
-</body>
 {% endblock %}
