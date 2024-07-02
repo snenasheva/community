@@ -1,25 +1,54 @@
 {% extends 'base2.html' %}
 
 {% block content %}
-<div class="p-4">
-<h1>
-    {{ item.name }}
-</h1>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <div class="text-center" style="width: 100%; max-width: 900px">
+    <br>
+    <br>
+    <h1>
+      {{ item.name }}
+    </h1>
+    <br>
+    {% if item.description %}
+      <p class="fs-3">
+        {{ item.description }}
+      </p>
+    {% endif %}
+    {% if item.owner_name %}
+      <p class="fs-4">
+        the owner: {{ item.owner_name }}
+      </p>
+    {% endif %}
+    {% if item.phone %}
+      <p class="fs-4">
+        phone number: {{ item.phone }}
+      </p>
+    {% endif %}
+    {% if item.address %}
+      <p class="fs-4">
+        address: {{ item.address }}
+      </p>
+    {% endif %}
+    {% if item.web_page %}
+      <p class="fs-4">
+        web-page: {{ item.web_page }}
+      </p>
+    {% endif %}
+  </div>
 
-  {{ item.description }}
-  <br>
-  <br>
-  the owner: {{ item.owner_name }}
-  <br>
-  phone number: {{ item.phone }}
-  <br>
-  address: {{ item.address }}
-  <br>
-  web-page: {{ item.web_page }}
+    {% if item in current_user.items %}
+    <div class="row">
+      <div class="col-auto">
+        <a class="btn btn-outline-primary mt-3 mb-3" href="{{ url_for ('edit_service', url=item.url_friendly_name) }}">Edit page</a>
+      </div>
+      <div class="col-auto">
+          <form action="{{ url_for('delete_service', url=item.url_friendly_name) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger mt-3 mb-3" onclick="return confirm('Are you sure you want to delete this page?');">Delete page</button>
+          </form>
+      </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 
-{% for item in current_user.items %}
-  {{ item.url_friendly_name }}
-{% endfor %}
 
