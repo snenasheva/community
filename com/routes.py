@@ -81,7 +81,6 @@ def business_page():
         current_user.has_business_page = True
         db.session.commit()
         flash('Your business page was created successfully', category='success')
-        # return redirect(url_for('user_service', url_friendly_name=business_to_create.url_friendly_name))
 
     if form.errors:
         for field, errors in form.errors.items():
@@ -98,14 +97,41 @@ def service(url):
     return render_template('service.html', item=item)
 
 
+@app.route('/service/edit/<url>', methods=["GET", "POST"])
+@login_required
+def edit_service(url):
+    item = Item.query.filter_by(url_friendly_name=url, owner_id=current_user.id).first_or_404()
+    form = BusinessForm(obj=item)
+
+    form.submit.label.text = "Save changes"
+    if form.validate_on_submit():
+        item.name = form.business_name.data
+        item.url_friendly_name = form.business_name.data.replace(' ', '').lower()
+        item.category = form.category.data
+        item.description = form.description.data
+        item.phone = form.phone.data
+        item.address = form.address.data
+        item.web_page = form.web_page.data
+        item.owner_name = form.owner_name.data
+        db.session.commit()
+        flash(f'The page was edited successfully', category='success')
+        return redirect(url_for('service', url=item.url_friendly_name))
+    return render_template('edit.html', form=form, item=item)
+
+
+@app.route('/service/delete/<url>', methods=["POST"])
+@login_required
+def delete_service(url):
+    item = Item.query.filter_by(url_friendly_name=url, owner_id=current_user.id).first_or_404()
+    db.session.delete(item)
+    db.session.commit()
+    flash('Your business page has been deleted', category='info')
+    return redirect(url_for('home_page'))
+
+
 @app.route('/drop')
 def drop():
     return render_template('drop.html')
-
-
-@app.route('/base2')
-def base2():
-    return render_template('base2.html')
 
 
 @app.route('/search', methods=["GET", "POST"])
@@ -114,11 +140,5 @@ def search():
     if search_query:
         results = Item.query.filter(Item.name.ilike(f'%{search_query}%')).all()
         return render_template('search_results.html', results=results, search_query=search_query)
-    return redirect(url_for('base2'))
-
-
-
-
-
-
+    return redirect(url_for('home_page'))
 
