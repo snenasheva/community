@@ -1,0 +1,228 @@
+{% extends 'base2.html' %}
+{% block content %}
+<style>
+    .category-card img {
+        height: 200px;
+        object-fit: cover;
+    }
+    .card {
+        height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .cat-desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Categories</h1>
+        <div class="row">
+            <!-- Category Card 1 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='construction_renovation') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/construction.png') }}" alt="construction" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Construction</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Category Card 2 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='food_beverage') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/restaurant.png') }}" alt="restaurants" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Food</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Category Card 3 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='auto') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/auto.png') }}" alt="auto" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Auto</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Category Card 4 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='construction_renovation') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/retail.png') }}" alt="retail" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Retail</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Close the row div here -->
+        <div class="row mt-4">
+            <!-- Row 2, Category Card 5 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='health_wellness') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/health.png') }}" alt="health" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Health</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2, Category Card 6 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='entertainment_media') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/entertainment.png') }}" alt="entertainment" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Entertainment</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2, Category Card 7 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='nonprofit_philanthropy') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/nonprofit.png') }}" alt="nonprofit" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Nonprofit</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2, Category Card 8 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='legal_services') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/legal.png') }}" alt="legal" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Legal</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <!-- Row 3, Category Card 9 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='business_consulting') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/consulting.png') }}" alt="legal" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Consulting</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 3, Category Card 10 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='eventplanning_services') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/events.png') }}" alt="events" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Events</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 3, Category Card 11 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='education_training') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/education.png') }}" alt="education" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Education</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 3, Category Card 12 -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 text-center">
+                <div class="card category-image-shape w-75 h-90">
+                    <a href="{{ url_for('items_by_category', category_name='realestate') }}" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="cat-item">
+                            <div class="cat-img text-shadow1">
+                                <img src="{{ url_for('static', filename='img/categories/estate.png') }}" alt="estate" class="cover-image h-8 w-8">
+                            </div>
+                            <div class="cat-desc">
+                                <h5 class="font-weight-semibold fs-18 pt-4">Real Estate</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
+{% set show_section = False %}
+
+
