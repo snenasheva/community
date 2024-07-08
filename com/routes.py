@@ -142,3 +142,15 @@ def search():
         return render_template('search_results.html', results=results, search_query=search_query)
     return redirect(url_for('home_page'))
 
+
+@app.route('/categories')
+def categories_page():
+    return render_template('categories.html')
+
+
+@app.route('/categories/<category_name>')
+def items_by_category(category_name):
+    items = Item.query.filter_by(category=category_name).all()
+    return render_template('category_choice.html', items=items, category_name=category_name)
+
+
