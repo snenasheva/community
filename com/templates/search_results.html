@@ -1,0 +1,13 @@
+{% extends 'base2.html' %}
+{% block content %}
+  <h2>Search results:</h2>
+  {% if results %}
+    <ul>
+      {% for item in results%}
+        <li><a href="{{ url_for('service', url=item.url_friendly_name) }}">{{item.name}}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No items found</p>
+  {% endif %}
+{% endblock %}
