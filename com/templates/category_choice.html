@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+
+{% block head %}
+    {{  super() }}
+    <style>
+    .custom-bg-1 { background-color: #20B2AA; !important}
+    .custom-bg-2 { background-color: #F4A460; !important}
+    .card.custom-bg {
+      color: black !important; /* Ensure text color is readable */
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+<h2>Businesses in category</h2>
+<div class="container mt-5">
+  <div class="row">
+      {% for item in items %}
+        <div class="col-12 mb-4 d-flex justify-content-left">
+            <div class="card custom-bg" style="width: 65%;">
+                <div class="card-body">
+                    <h5>{{ item.name }}</h5>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const colors = ['custom-bg-1', 'custom-bg-2'];
+    const cards = document.querySelectorAll('.card.custom-bg');
+    cards.forEach((card, index) => {
+      card.classList.add(colors[index % colors.length]);
+    });
+  });
+</script>
+{% endblock %}
