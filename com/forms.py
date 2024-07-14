@@ -65,7 +65,7 @@ class BusinessForm(FlaskForm):
         ('travel_leisure', 'Travel & Leisure'),
         ('other', 'Other')
     ], validators=[DataRequired()])
-    description = StringField(label='Tell about your business in a few words', validators=[Optional()])
+    description = StringField(label='Tell about your business in a few words', validators=[Optional(), Length(max=120)])
     owner_name = StringField(label='Insert your name as business owner', validators=[DataRequired()])
     phone = StringField(label='Insert your phone number',
                         validators=[Optional(),
