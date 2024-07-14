@@ -3,7 +3,7 @@ html, body{
 }
 
 body{
-  min_width: 320 px;
+  min-width: 320 px;
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   font-weight: <weight>;
@@ -22,7 +22,7 @@ main.main {
 
 .category-img-size {
   width: 160px;
-  length: 160px;
+  height: 160px;
 }
 
 .background-image {
