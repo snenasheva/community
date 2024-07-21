@@ -1,16 +1,43 @@
+import os
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import secrets
+from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from config import config
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///community.db'
-app.config['SECRET_KEY'] = secrets.token_hex(16)
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
+db = SQLAlchemy()
+migrate = Migrate()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 login_manager.login_view = 'login_page'
 login_manager.login_message_category = 'info'
-from com import routes
+
+
+def create_app(config_name='default'):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+
+    db.init_app(app)
+    migrate.init_app(app, db)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+
+    with app.app_context():
+        from . import models
+        from .routes import register_routes
+        register_routes(app)
+
+    return app
+
+
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+
+
+if __name__ == "__main__":
+    app.run()
+
+
+
