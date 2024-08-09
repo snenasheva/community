@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<body class="text-left">
+<div class="container">
+    <form action="" method="POST" class="form-register" style="color:black">
+      {{ form.hidden_tag() }}
+      <br>
+      <h1 class="h3 mb-3 font-weight-normal text-center">
+       Here you can edit information about your business:
+       </h1>
+       <div class="mb-3">
+        {{ form.business_name.label() }}
+        {{ form.business_name(class='form-control', placeholder='') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.category.label() }}
+        {{ form.category(class='form-control', placeholder='') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.owner_name.label() }}
+        {{ form.owner_name(class='form-control', placeholder='') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.description.label() }}
+        {{ form.description(class='form-control', placeholder='Your business description (optional field)') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.phone.label() }}
+        {{ form.phone(class='form-control', placeholder='Optional Field') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.address.label() }}
+        {{ form.address(class='form-control', placeholder='Optional Field') }}
+       </div>
+
+       <div class="mb-3">
+        {{ form.web_page.label() }}
+        {{ form.web_page(class='form-control', placeholder='Optional Field') }}
+       </div>
+
+       <div class="mt-3">
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+       </div>
+
+    </form>
+</div>
+</body>
+{% endblock %}

@@ -1,5 +1,8 @@
+import jwt
+import com
 from com import db, bcrypt, login_manager
 from flask_login import UserMixin
+from time import time
 
 
 @login_manager.user_loader
@@ -15,11 +18,9 @@ class User(db.Model, UserMixin):
     items = db.relationship('Item', backref='owned_user', lazy=True)
     has_business_page = db.Column(db.Boolean, default=False)
 
-
     @property
     def password(self):
         return self.password
-
 
     @password.setter
     def password(self, plain_text_password):
@@ -27,6 +28,19 @@ class User(db.Model, UserMixin):
 
     def check_login_psw(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
+
+    def get_reset_psw_token(self, expires_in=600):
+        return jwt.encode(
+            {'reset_password': self.id, 'exp': time() + expires_in},
+            com.config['JWT_SECRET_KEY'], algorithm='HS256')
+
+    @staticmethod
+    def verify_reset_psw_token(token):
+        try:
+            id = jwt.decode(token, com.config['JWT_SECRET_KEY'], algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return db.session.get(User, id)
 
 
 class Item(db.Model):

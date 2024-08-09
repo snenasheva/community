@@ -24,47 +24,47 @@
             {% if current_user.is_authenticated %}
               <ul class="navbar-nav ms-auto pe-3 mb-2 mb-lg-0">
                 <li class="nav-item me-3">
-                  <a class="nav-link active" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('main.home_page') }}">Home</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="{{ url_for('categories_page') }}">Categories</a>
+                  <a class="nav-link" href="{{ url_for('main.categories_page') }}">Categories</a>
                 </li>
                 {% if current_user.items %}
                   <li class="nav-item dropdown me-3">
-                    <a class="nav-link dropdown-toggle" href="{{ url_for ('drop') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="{{ url_for ('main.drop') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Your Businesses
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       {% for item in current_user.items %}
                         <li>
-                          <a class="dropdown-item" href="{{ url_for ('service', url=item.url_friendly_name) }}">{{item.name}}</a>
+                          <a class="dropdown-item" href="{{ url_for ('business.service', url=item.url_friendly_name) }}">{{item.name}}</a>
                         </li>
                       {% endfor %}
                     </ul>
                   </li>
                 {% endif %}
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="{{ url_for ('business_page') }}">Add Your Business</a>
+                  <a class="nav-link" href="{{ url_for ('business.business_page') }}">Add Your Business</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="btn btn-outline-primary" href="{{ url_for ('logout') }}">Log out</a>
+                  <a class="btn btn-outline-primary" href="{{ url_for ('auth.logout') }}">Log out</a>
                 </li>
               </ul>
             {% else %}
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="{{ url_for ('home_page') }}">Home</a>
+                  <a class="nav-link" href="{{ url_for ('main.home_page') }}">Home</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="{{ url_for('categories_page') }}">Categories</a>
+                  <a class="nav-link" href="{{ url_for('main.categories_page') }}">Categories</a>
                 </li>
               </ul>
               <ul class="navbar-nav">
                 <li class="nav-item me-3">
-                  <a class="nav-link registration-link" href="{{ url_for ('register_page')}}">Registration</a>
+                  <a class="nav-link registration-link" href="{{ url_for ('auth.register_page')}}">Registration</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="btn btn-outline-primary" href="{{ url_for ('login_page') }}">Log in</a>
+                  <a class="btn btn-outline-primary" href="{{ url_for ('auth.login_page') }}">Log in</a>
                 </li>
               </ul>
             {% endif %}
@@ -98,7 +98,7 @@
           </div>
           <div class="container">
             <div class="row">
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+              <div class="col-xl-2 col-lg-4 col-sm-4 mt-2 text-center">
                 <div class="card" style="width: 10rem;">
                   <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
                   <div class="card-body">

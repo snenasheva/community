@@ -13,7 +13,7 @@
 
               <div class="col-12 text-center">
                 <div  class="finder">
-                  <form class="search-form d-flex justify-content-center" method="GET" action="{{ url_for('search') }}">
+                  <form class="search-form d-flex justify-content-center" method="GET" action="{{ url_for('main.search') }}">
                     <input class="form-control me-2" type="search" name="search_query" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>
@@ -23,7 +23,7 @@
                 <div class="bottom-content">
                   <h2>
                     Find the best local cafés, shops, services, and more. <br>
-                    Business owner? <a href="{{ url_for('register_page') }}">
+                    Business owner? <a href="{{ url_for('auth.register_page') }}">
                             Register</a> your business page with us today!<br>
                   </h2>
                 </div>

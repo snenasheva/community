@@ -4,7 +4,7 @@
   {% if results %}
     <ul>
       {% for item in results%}
-        <li><a href="{{ url_for('service', url=item.url_friendly_name) }}">{{item.name}}</a></li>
+        <li><a href="{{ url_for('business.service', url=item.url_friendly_name) }}">{{item.name}}</a></li>
       {% endfor %}
     </ul>
   {% else %}
