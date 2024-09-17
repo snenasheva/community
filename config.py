@@ -39,3 +39,5 @@ config = {
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
+
+print(f"JWT_SECRET_KEY:  {os.getenv('JWT_SECRET_KEY')}")

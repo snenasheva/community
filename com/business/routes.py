@@ -31,7 +31,7 @@ def business_page():
             for error in errors:
                 flash(f'There was an error with creating a user for field "{getattr(form, field).label.text}": {error}',
                       category='danger')
-    print("Form Errors:", form.errors)
+                print("Form Errors:", form.errors)
     return render_template('business.html', form=form)
 
 

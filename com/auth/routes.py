@@ -36,15 +36,18 @@ def login_page():
     form = LoginForm()
     if form.validate_on_submit():
         print('===The form is submitted===')
-        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if '@' in form.username_or_email.data:
+            attempted_user = User.query.filter_by(email=form.username_or_email.data).first()
+        else:
+            attempted_user = User.query.filter_by(username=form.username_or_email.data).first()
         if attempted_user is None:
-            flash('There is no user with this username. Please, try again', category='danger')
+            flash('There is no account associated with this username or email. Please, try again', category='danger')
         elif attempted_user.check_login_psw(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'Success! Now you are logged in as {attempted_user.username}', category='success')
             return redirect(url_for('main.home_page'))
         else:
-            flash('Username and password are not matched. Please, try again', category='danger')
+            flash('Username/Email and password do not matched. Please, try again', category='danger')
     return render_template('login_page.html', form=form)
 
 
@@ -61,12 +64,12 @@ def reset_psw_request():
         return redirect(url_for('main.home_page'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data)
+        user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_psw_reset_email(user)
         flash(f'Check your email for the instructions to reset your password')
         return redirect(url_for('auth.login_page'))
-    return render_template(url_for('reset_psw_request.html'), title='Reset Password', form=form)
+    return render_template('reset_psw_request.html', title='Reset Password', form=form)
 
 
 @auth_bp.route('/reset_password/<token>', methods=["GET", "POST"])
@@ -79,12 +82,19 @@ def reset_password(token):
         return redirect(url_for('auth.login_page'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
+        print("Form validated successfully")
         if user.email != form.email.data:
             flash('Email does not match the one associated with the reset request.', category='danger')
         else:
+            print(f'Before: {user.password_hash}')
             user.password = form.new_password1.data
+            print(f'After: {user.password_hash}')
             db.session.commit()
+            print('Password is updated in database')
             flash('Your password has been reset. Now you can log in', category='success')
             return redirect(url_for('auth.login_page'))
-    return render_template('reset_password.html', form=form)
+    else:
+        print(form.errors)
+    return render_template('email/reset_password.html', form=form, token=token)
+
 

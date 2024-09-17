@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField(label='Insert your username', validators=[DataRequired()])
+    username_or_email = StringField(label='Insert your username or email', validators=[DataRequired()])
     password = PasswordField(label='Insert your password', validators=[DataRequired()])
     submit = SubmitField(label='Sign In')
 
@@ -37,7 +37,7 @@ class ResetPasswordRequestForm(FlaskForm):
 class ResetPasswordForm(FlaskForm):
     email = StringField(label='insert your e-mail', validators=[DataRequired(), Email()])
     new_password1 = PasswordField(label='your new password', validators=[DataRequired()])
-    new_password2 = PasswordField(label='confirm password', validators=[DataRequired(), EqualTo(new_password1)])
+    new_password2 = PasswordField(label='confirm password', validators=[DataRequired(), EqualTo('new_password1')])
     submit = SubmitField(label='Submit')
 
 # class PhoneForm(FlaskForm):

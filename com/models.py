@@ -1,7 +1,7 @@
 import jwt
-import com
 from com import db, bcrypt, login_manager
 from flask_login import UserMixin
+from flask import current_app
 from time import time
 
 
@@ -32,12 +32,12 @@ class User(db.Model, UserMixin):
     def get_reset_psw_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            com.config['JWT_SECRET_KEY'], algorithm='HS256')
+            current_app.config['JWT_SECRET_KEY'], algorithm='HS256')
 
     @staticmethod
     def verify_reset_psw_token(token):
         try:
-            id = jwt.decode(token, com.config['JWT_SECRET_KEY'], algorithms=['HS256'])['reset_password']
+            id = jwt.decode(token, current_app.config['JWT_SECRET_KEY'], algorithms=['HS256'])['reset_password']
         except:
             return
         return db.session.get(User, id)
