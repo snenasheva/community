@@ -103,6 +103,17 @@ def send_email_gmail(subject, sender, to, message_text):
         return None
 
 
+def send_verification_email(user):
+    token = user.get_reset_psw_token()
+    text_body = render_template('email/email_verification.txt', user=user, username=user.username, token=token)
+    send_email_gmail(
+        subject='Confirm your registration',
+        message_text=text_body,
+        sender=current_app.config['ADMINS'][0],
+        to=user.email
+    )
+
+
 def send_psw_reset_email(user):
     token = user.get_reset_psw_token()
     text_body = render_template('email/reset_password.txt', user=user, username=user.username, token=token)

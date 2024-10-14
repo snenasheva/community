@@ -1,0 +1,7 @@
+Hi {{user}},
+We just need to verify your email address before you can access Pardes Hanna Business Hub service.
+
+Verify your email address by clicking on the link below:
+{{ url_for('auth.verify_email', token=token, _external=True) }}
+
+Thanks! – Pardes Hanna Business Hub service team

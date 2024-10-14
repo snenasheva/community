@@ -4,44 +4,74 @@ from com.models import User, Item
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth_bp
 from .forms import RegistrationForm, LoginForm, ResetPasswordRequestForm, ResetPasswordForm
-from .email import send_psw_reset_email
+from sqlalchemy.exc import IntegrityError
+from .email import send_psw_reset_email, send_verification_email
 
 
 @auth_bp.route('/register', methods=["GET", "POST"])
 def register_page():
     form = RegistrationForm()
     if form.validate_on_submit():
+
         user_to_create = User(
             username=form.username.data,
             email=form.email.data,
             password=form.password1.data
-                              )
-        db.session.add(user_to_create)
-        db.session.commit()
-        login_user(user_to_create)
-        flash(
-            f'Account was created successfully. '
-            f'You are now logged in as {user_to_create.username}', category='success'
         )
-        return redirect(url_for('main.home_page'))
+        try:
+            db.session.add(user_to_create)
+            db.session.commit()
+            send_verification_email(user_to_create)
+            flash(
+                    'A verification email has been sent to your email address. Please verify your account.',
+                    category='info'
+                )
+            return redirect(url_for('auth.login_page'))
+
+        except IntegrityError:
+            db.session.rollback()
+            flash('This email or username is already associated with an account', category='danger')
 
     if form.errors != {}:
-        for err_msg in form.errors:
-            flash(f'There was an error with creating a user: {err_msg}', category='danger')
+        for field, err_msgs in form.errors.items():
+            for err_msg in err_msgs:
+                if field in ['username', 'email']:
+                    flash("The username or email is already in use. Please try again with different credentials.",
+                          category='danger')
+                else:
+                    flash(f'There was an error with creating a user: {err_msg}', category='danger')
     return render_template('register.html', form=form)
+
+
+@auth_bp.route('/verify_email/<token>', methods=["GET", "POST"])
+def verify_email(token):
+    user = User.verify_reset_psw_token(token)
+    if not user:
+        flash('The verification link is invalid or has expired', category='danger')
+        return redirect(url_for('auth.login_page'))
+
+    if user.verified:
+        flash('Your email was already verified', category='info')
+    else:
+        user.verified = True
+        db.session.commit()
+        flash('Your registration was completed successfully', category='success')
+    db.session.commit()
+    return redirect(url_for('auth.login_page'))
 
 
 @auth_bp.route('/login_page', methods=["GET", "POST"])
 def login_page():
     form = LoginForm()
     if form.validate_on_submit():
-        print('===The form is submitted===')
         if '@' in form.username_or_email.data:
             attempted_user = User.query.filter_by(email=form.username_or_email.data).first()
         else:
             attempted_user = User.query.filter_by(username=form.username_or_email.data).first()
         if attempted_user is None:
             flash('There is no account associated with this username or email. Please, try again', category='danger')
+        elif not attempted_user.verified:
+            flash('Your email is not verified. Please check your email to verify your account.', category='warning')
         elif attempted_user.check_login_psw(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'Success! Now you are logged in as {attempted_user.username}', category='success')
@@ -89,6 +119,7 @@ def reset_password(token):
             print(f'Before: {user.password_hash}')
             user.password = form.new_password1.data
             print(f'After: {user.password_hash}')
+            user.verified = True
             db.session.commit()
             print('Password is updated in database')
             flash('Your password has been reset. Now you can log in', category='success')
@@ -96,5 +127,4 @@ def reset_password(token):
     else:
         print(form.errors)
     return render_template('email/reset_password.html', form=form, token=token)
-
 

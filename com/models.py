@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(60), nullable=False)
     items = db.relationship('Item', backref='owned_user', lazy=True)
     has_business_page = db.Column(db.Boolean, default=False)
+    verified = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):

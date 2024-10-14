@@ -11,7 +11,7 @@ class RegistrationForm(FlaskForm):
         if user:
             raise ValidationError('This username already exists')
 
-    def validate_email_address(self, email_to_check):
+    def validate_email(self, email_to_check):
         check_email = User.query.filter_by(email=email_to_check.data).first()
         if check_email:
             raise ValidationError('This email is already associated with an account')
