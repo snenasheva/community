@@ -29,9 +29,8 @@ def business_page():
     if form.errors:
         for field, errors in form.errors.items():
             for error in errors:
-                flash(f'There was an error with creating a user for field "{getattr(form, field).label.text}": {error}',
-                      category='danger')
-                print("Form Errors:", form.errors)
+                custom_message = f"There was an error with creating your business page for field '{getattr(form, field).label.text}': {error}"
+                flash(custom_message, category='danger')
     return render_template('business.html', form=form)
 
 

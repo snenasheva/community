@@ -1,9 +1,20 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
-from wtforms.validators import Length, DataRequired, Regexp, Optional
-
+from wtforms.validators import Length, DataRequired, ValidationError, Regexp, Optional
+from com.models import Item, User
+from flask_login import current_user
 
 class BusinessForm(FlaskForm):
+    def validate_business_name(self, business_name_to_check):
+        item = Item.query.filter_by(name=business_name_to_check.data).first()
+        if item:
+            raise ValidationError('This business name is already in use')
+
+    def validate_owner_name(self, owner_name_to_check):
+        owner = Item.query.filter_by(owner_name=owner_name_to_check.data).first()
+        if owner:
+            raise ValidationError('This owner name is associated with another user')
+
     business_name = StringField(label='Insert your business name', validators=[DataRequired()])
     category = SelectField(label="Choose your business category", choices=[
         ('accounting_bookkeeping', 'Accounting & Bookkeeping'),
@@ -46,9 +57,6 @@ class BusinessForm(FlaskForm):
                                     Length(min=10, max=13), Regexp(regex='^[+-]?[0-9]+')])
     address = StringField(label='Insert your business address', validators=[Optional(), Length(min=3, max=120)])
 
-    # def validate_address(form, field):
-    #    if form.data and (len(form.data) < 3 or len(form.data) > 120):
-    #        raise ValidationError('Address must be between 3 and 120 characters long')
     web_page = StringField(label='If you have a web-site, insert the link', validators=[Optional()])
     submit = SubmitField(label='Create your business page')
 
