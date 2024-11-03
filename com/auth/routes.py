@@ -88,6 +88,16 @@ def logout():
     return redirect(url_for('main.home_page'))
 
 
+@auth_bp.route('/delete')
+@login_required
+def delete_account():
+    user = User.query.filter_by(username=current_user.username).first()
+    db.session.delete(user)
+    db.session.commit()
+    flash('Your account has been deleted', category='info')
+    return redirect(url_for('main.home_page'))
+
+
 @auth_bp.route('/reset_password_request', methods=["GET", "POST"])
 def reset_psw_request():
     if current_user.is_authenticated:
