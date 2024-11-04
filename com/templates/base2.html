@@ -100,32 +100,71 @@
     <main class="main">
       {% block content %}{% endblock %}
       {% if show_section %}
-        <section>
-          <div class="container-fluid mt-5 mb-5">
-            <div class="row">
-              <div class="col-12">
-                <h2 class="section-title text-center"><span>Main Categories</span></h2>
-              </div>
+      <section>
+        <div class="container-fluid mt-5 mb-5">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="section-title text-center">
+                <span>Main Categories</span>
+              </h2>
             </div>
-            <div class="container">
-              <div class="row">
-                <!-- Repeat this structure for each category card -->
-                <div class="col-xl-2 col-lg-4 col-sm-4 mt-2 text-center">
-                  <div class="card" style="width: 10rem;">
-                    <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
-                    <div class="card-body">
-                      <a href="{{ url_for('main.items_by_category', category_name='food_beverage') }}" class="btn btn-primary">Food</a>
-                    </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-2 col-lg-4 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
+                  <div class="card-body">
+                    <a href="{{ url_for('main.items_by_category', category_name='food_beverage') }}" class="btn btn-primary">Food</a>
                   </div>
                 </div>
-                <!-- Additional cards here... -->
+              </div>
+              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/yoga.jpg') }}" class="card-img-top" alt="Health Image">
+                  <div class="card-body">
+                    <a href="{{ url_for('main.items_by_category', category_name='health_wellness') }}" class="btn btn-primary">Health</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/repair.jpg') }}" class="card-img-top" alt="Repair Image">
+                  <div class="card-body">
+                    <a href="{{ url_for('main.items_by_category', category_name='construction_renovation') }}" class="btn btn-primary">Repair</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/shopping.jpg') }}" class="card-img-top" alt="Shopping Image">
+                  <div class="card-body">
+                    <a href="{{ url_for('main.items_by_category', category_name='retail') }}" class="btn btn-primary">Shopping</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/disco2.jpg') }}" class="card-img-top" alt="Events Image">
+                  <div class="card-body">
+                    <a href="{{ url_for('main.items_by_category', category_name='eventplanning_services') }}" class="btn btn-primary">Events</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                <div class="card" style="width: 10rem;">
+                  <img src="{{ url_for('static', filename='img/home/home_garden.jpg') }}" class="card-img-top" alt="Home Image">
+                  <div class="card-body">
+                    <a href="#" class="btn btn-primary">Home&Garden</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
       {% endif %}
     </main>
-
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="container">
         <div class="row">
@@ -138,12 +177,28 @@
               <li><a class="link-secondary" href="#">Материал для разработчиков</a></li>
             </ul>
           </div>
-          <!-- Repeat this structure for additional footer columns... -->
+          <div class="col-md-4">
+            <h5>About the Project</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="link-secondary" href="#">Прикольная штука</a></li>
+              <li><a class="link-secondary" href="#">Случайная особенность</a></li>
+              <li><a class="link-secondary" href="#">Особенность команды</a></li>
+              <li><a class="link-secondary" href="#">Материал для разработчиков</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>About the Project</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="link-secondary" href="#">Прикольная штука</a></li>
+              <li><a class="link-secondary" href="#">Случайная особенность</a></li>
+              <li><a class="link-secondary" href="#">Особенность команды</a></li>
+              <li><a class="link-secondary" href="#">Материал для разработчиков</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
   </div>
-
   <script src="https://kit.fontawesome.com/6613cdf3fd.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
