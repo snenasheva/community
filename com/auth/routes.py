@@ -88,11 +88,14 @@ def logout():
     return redirect(url_for('main.home_page'))
 
 
-@auth_bp.route('/delete')
+@auth_bp.route('/delete', methods=["GET", "POST"])
 @login_required
 def delete_account():
-    user = User.query.filter_by(username=current_user.username).first()
-    db.session.delete(user)
+    items_to_delete = Item.query.filter_by(owner_id=current_user.id).all()
+    for item in items_to_delete:
+        db.session.delete(item)
+    user_to_delete = User.query.filter_by(username=current_user.username).first()
+    db.session.delete(user_to_delete)
     db.session.commit()
     flash('Your account has been deleted', category='info')
     return redirect(url_for('main.home_page'))
