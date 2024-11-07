@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import Length, DataRequired, ValidationError, Regexp, Optional
-from com.models import Item, User
-from flask_login import current_user
+from com.models import Item
+
 
 class BusinessForm(FlaskForm):
     def validate_business_name(self, business_name_to_check):
@@ -59,7 +59,3 @@ class BusinessForm(FlaskForm):
 
     web_page = StringField(label='If you have a web-site, insert the link', validators=[Optional()])
     submit = SubmitField(label='Create your business page')
-
-
-
-
