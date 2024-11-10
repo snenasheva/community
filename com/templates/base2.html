@@ -97,73 +97,127 @@
       {% endif %}
     {% endwith %}
 
-    <main class="main">
-      {% block content %}{% endblock %}
+    <main class="main" style="background-image: url('static/img/bg/bg_1.jpg'); background-size: cover; background-position: center">
+      {% block content %}
+      {% endblock %}
+
       {% if show_section %}
-      <section>
-        <div class="container-fluid mt-5 mb-5">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="section-title text-center">
-                <span>Main Categories</span>
-              </h2>
+        <section style="max-width: 800px; margin: 70px auto 70px;">
+            <div id="carouselWithCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='img/carousel/carousel_health.jpg') }}" class="d-block mx-auto" style="width: 100%;" alt="Week_1">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Yoga Louis</h5>
+                      <p>Yoga in hammocks</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/carousel/carousel_estate.jpeg') }}" class="d-block mx-auto" style="width: 100%;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Метка второго слайда</h5>
+                      <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/carousel/carousel_food.jpeg') }}" class="d-block mx-auto" style="width: 100%;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Метка третьего слайда</h5>
+                      <p>Некоторый репрезентативный заполнитель для третьего слайда.</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='img/carousel/carousel_auto.jpg') }}" class="d-block mx-auto" style="width: 100%;" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Метка 4 слайда</h5>
+                      <p>Некоторый репрезентативный заполнитель для 4го слайда.</p>
+                    </div>
+                  </div>
+              </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselWithCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Предыдущий</span>
+              </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselWithCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Следующий</span>
+              </button>
             </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-xl-2 col-lg-4 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
-                  <div class="card-body">
-                    <a href="{{ url_for('main.items_by_category', category_name='food_beverage') }}" class="btn btn-primary">Food</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/yoga.jpg') }}" class="card-img-top" alt="Health Image">
-                  <div class="card-body">
-                    <a href="{{ url_for('main.items_by_category', category_name='health_wellness') }}" class="btn btn-primary">Health</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/repair.jpg') }}" class="card-img-top" alt="Repair Image">
-                  <div class="card-body">
-                    <a href="{{ url_for('main.items_by_category', category_name='construction_renovation') }}" class="btn btn-primary">Repair</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/shopping.jpg') }}" class="card-img-top" alt="Shopping Image">
-                  <div class="card-body">
-                    <a href="{{ url_for('main.items_by_category', category_name='retail') }}" class="btn btn-primary">Shopping</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/disco2.jpg') }}" class="card-img-top" alt="Events Image">
-                  <div class="card-body">
-                    <a href="{{ url_for('main.items_by_category', category_name='eventplanning_services') }}" class="btn btn-primary">Events</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-4 mt-2 text-center">
-                <div class="card" style="width: 10rem;">
-                  <img src="{{ url_for('static', filename='img/home/home_garden.jpg') }}" class="card-img-top" alt="Home Image">
-                  <div class="card-body">
-                    <a href="#" class="btn btn-primary">Home&Garden</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
       {% endif %}
+
+      {% if show_section %}
+          <section>
+            <div class="container-fluid mt-5 mb-5">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="section-title text-center">
+                    <span>Main Categories</span>
+                  </h2>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-2 col-lg-4 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/cafe.jpg') }}" class="card-img-top" alt="Food Image">
+                      <div class="card-body">
+                        <a href="{{ url_for('main.items_by_category', category_name='food_beverage') }}" class="btn btn-primary">Food</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/yoga.jpg') }}" class="card-img-top" alt="Health Image">
+                      <div class="card-body">
+                        <a href="{{ url_for('main.items_by_category', category_name='health_wellness') }}" class="btn btn-primary">Health</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/repair.jpg') }}" class="card-img-top" alt="Repair Image">
+                      <div class="card-body">
+                        <a href="{{ url_for('main.items_by_category', category_name='construction_renovation') }}" class="btn btn-primary">Repair</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/shopping.jpg') }}" class="card-img-top" alt="Shopping Image">
+                      <div class="card-body">
+                        <a href="{{ url_for('main.items_by_category', category_name='retail') }}" class="btn btn-primary">Shopping</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/disco2.jpg') }}" class="card-img-top" alt="Events Image">
+                      <div class="card-body">
+                        <a href="{{ url_for('main.items_by_category', category_name='eventplanning_services') }}" class="btn btn-primary">Events</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-sm-4 mt-2 text-center">
+                    <div class="card" style="width: 10rem;">
+                      <img src="{{ url_for('static', filename='img/home/home_garden.jpg') }}" class="card-img-top" alt="Home Image">
+                      <div class="card-body">
+                        <a href="#" class="btn btn-primary">Home&Garden</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+      {% endif %}
+
     </main>
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="container">
