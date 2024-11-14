@@ -26,7 +26,7 @@ main.main {
 }
 
 .background-image {
-  background-image: url('../img/home/banner2.jpg');
+  background-image: url('../img/bg/bg_4.jpg');
   background-position: center;
   background-size: cover;
   padding: 60px 0;
@@ -57,9 +57,40 @@ main.main {
 }
 
 /* Media query for smaller screens */
-@media (max-width: 650px) {
+@media (max-width: 576px) {
   .background-image {
   padding: 40px 10px;
   }
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  height: $card-height;
+  word-wrap: break-word;
+  background-color: transparent;
+  background-clip: border-box;
+  border: 0;
+  @include border-radius($card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+
+    &:first-child {
+      border-top-width: 0;
+      @include border-top-radius($card-inner-border-radius);
+    }
+
+    &:last-child  {
+      border-bottom-width: 0;
+      @include border-bottom-radius($card-inner-border-radius);
+    }
+  }
