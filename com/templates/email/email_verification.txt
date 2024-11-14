@@ -1,4 +1,4 @@
-Hi {{user}},
+Hi {{username}},
 We just need to verify your email address before you can access Pardes Hanna Business Hub service.
 
 Verify your email address by clicking on the link below:
