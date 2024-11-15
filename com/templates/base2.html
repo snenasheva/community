@@ -103,7 +103,7 @@
 
       {% if show_section %}
         <section>
-            <div id="carouselWithCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselWithCaptions" class="carousel slide d-none d-sm-block" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselWithCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ url_for('static', filename='img/carousel/health_long.jpg') }}" class="d-block mx-auto" style="width: 100%;" alt="Week_1">
+                    <img src="{{ url_for('static', filename='img/carousel/health_long.jpg') }}" class="d-block mx-auto" style="width: 100%;" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>Yoga Louis</h5>
                       <p>Yoga in hammocks</p>
