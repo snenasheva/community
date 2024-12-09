@@ -97,7 +97,7 @@
       {% endif %}
     {% endwith %}
 
-    <main class="main" style="background-image: url('static/img/bg/bg_1.jpg'); background-size: cover; background-position: center">
+    <main class="main" style="background-image: url('{{ url_for('static', filename='img/bg/bg_1.jpg') }}'); background-size: cover; background-position: center">
       {% block content %}
       {% endblock %}
 
@@ -219,7 +219,7 @@
       {% endif %}
 
     </main>
-    <footer class="pt-4 pt-md-5 border-top" style="background-image: url('static/img/bg/bg_bottom1.jpg'); background-size: cover; background-position: center">
+    <footer class="pt-4 pt-md-5 border-top" style="background-image: url('{{ url_for ('static', filename='/img/bg/bg_bottom1.jpg') }}'); background-size: cover; background-position: center">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
