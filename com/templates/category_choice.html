@@ -16,7 +16,7 @@
   <div class="row">
       {% for item in items %}
         <div class="col-12 mb-4 d-flex justify-content-left">
-            <div class="card custom-bg" style="width: 65%;">
+            <div class="card custom-bg horizontal-card" style="width: 65%;">
                 <a href="{{ url_for ('business.service', url=item.url_friendly_name) }}" class="stretched-link"></a>
                 <div class="card-body">
                     <h5>{{ item.name }}</h5>
