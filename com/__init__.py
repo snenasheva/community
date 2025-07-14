@@ -36,4 +36,5 @@ def create_app(config_name='default'):
 
     return app
 
+
 from com import models
