@@ -9,14 +9,6 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# def send_email(subject, sender, recipients, text_body, html_body):
-#    msg = Message(subject, sender=sender, recipients=recipients)
-#    msg.body = text_body
-#    msg.html = html_body
-#    with current_app.app_context():
-#        mail.send(msg)
-
-
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 
