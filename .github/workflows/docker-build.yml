@@ -20,11 +20,27 @@ jobs:
       - name: Build Docker image
         run: docker build -t community-app .
 
-      - name: Run container and test
+      - name: Run Flask container
+        run: docker run -d -p 5000:5000 --name test-app community-app
+
+      - name: Wait for the Flask app to start
         run: |
-          docker run -d -p 5000:5000 --name test-app community-app
-          sleep 5
-          curl --fail http://localhost:5000 || (docker logs test-app && exit 1)
+          for i in {1..10}; do
+            if curl --silent http://localhost:5000/ > /dev/null; then
+              echo "Server is up!"
+              exit 0
+            else
+              echo "Waiting for server... ($i)"
+              sleep 3
+            fi
+          done
+          echo "Server did not respond in time."
+          docker logs test-app  # Show logs on failure
+          exit 1
+
+      - name: Run basic HTTP test
+        run: |
+          curl --fail http://localhost:5000/ || (docker logs test-app && exit 1)
 
       - name: Cleanup
         run: docker rm -f test-app
