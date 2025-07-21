@@ -1,3 +1,42 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Bytecode and cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+
+# PyCharm
+.idea/
+*.iml
+
+# Environment and credentials
+.env
+credentials.json
+token.json
+
+# Flask instance folder (runtime-generated data)
+instance/
+
+# Flask-Migrate and Alembic
+migrations/
+migrations/versions/
+
+# SQLite DB
+*.sqlite3
+*.db
+
+# Docker
+*.log
+*.pid
+*.tar
+*.gz
+*.bak
+*.swp
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?

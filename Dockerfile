@@ -7,6 +7,12 @@ WORKDIR /code
 
 COPY requirements.txt /code/
 
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libpq-dev \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
